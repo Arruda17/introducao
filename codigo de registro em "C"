@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+main(){
+	typedef struct { int numcon;
+	char nome[20];
+	float saldo;
+	}Tipo_Banco;
+	Tipo_Banco bancos[20];
+	int cont=0,p,resp,menorc;
+	float menor=99999999;
+	char menorn[20];
+	do{
+		system("cls");
+		printf("Banco Central\n");
+		printf("\n\nCadastro de conta\n\n");
+		printf("\nnumero da conta.:");
+		scanf("%d",&bancos[cont].numcon);
+		printf("\nNome: ");
+		fflush(stdin);
+		gets(bancos[cont].nome);
+		printf("\nSaldo:");
+		scanf("%f",&bancos[cont].saldo);
+		if(bancos[cont].saldo<menor){
+		menor=bancos[cont].saldo;
+		menorc=bancos[cont].numcon;
+		}
+		cont++;
+		
+		printf("\n\ndeseja cadastrar novas contas (1-sim/2-nao)?" );
+		scanf("%d",&resp);
+	}while ((resp==1) && (cont<20));
+	
+	system("cls");
+	printf("\n Banco Central\n");
+	printf("\n\nContas cadastradas\n");
+	printf("\n____________________________________________________________");
+	printf("\nNumero da conta  Nome                  Saldo");
+	printf("\n____________________________________________________________");
+	for(p=0;p<cont;p++)
+	printf("\n%15d  %-20s  %5.2f",bancos[p].numcon,bancos[p].nome,bancos[p].saldo);
+	printf("\n____________________________________________________________");
+	printf("\nA conta com menor valor: \n\n");
+	printf("conta: %d  valor: %.2f",menorc,menor);
+	printf("\n____________________________________________________________");
+	printf("\ntecle enter para sair...");
+	getche();
+}
